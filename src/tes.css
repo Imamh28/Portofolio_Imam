@@ -1,0 +1,32 @@
+.button {
+    background: #38bdf8;
+    position: relative;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    transition: color 0.5s ease-in-out;
+    border-radius: 25px;
+}
+
+.button::before {
+    content: "📞";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #334155;
+    opacity: 85%;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+    /* border-radius: 25px; */
+}
+
+.button:hover {
+    color: #334155;
+    opacity: 85%;
+}
+
+.button:hover::before{
+    transform: scaleX(1);
+}
