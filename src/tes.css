@@ -30,3 +30,9 @@
 .button:hover::before{
     transform: scaleX(1);
 }
+
+.img {
+    position: relative;
+    border-radius: 25px;
+
+}
