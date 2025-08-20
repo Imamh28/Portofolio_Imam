@@ -1,46 +1,329 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio</title>
-    <link href="dist/output.css" rel="stylesheet">
-    <link rel="stylesheet" href="src/tes.css">
+    <title>Portfolio | Imam Hatris Ekaputra</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9', // sky-500
+                        secondary: '#64748b', // slate-500
+                        dark: '#0f172a' // slate-900
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        /* Custom Styles for Components */
+        .nav-link {
+            @apply px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors duration-300;
+        }
+        .section-title {
+            @apply text-3xl font-bold text-dark dark:text-white md:text-4xl;
+        }
+        .section-subtitle {
+            @apply mt-2 text-base font-medium text-secondary;
+        }
+        .tag {
+            @apply inline-block bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 text-xs font-semibold px-3 py-1 rounded-full;
+        }
+        .card {
+            @apply bg-white dark:bg-slate-800/50 rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+        }
+        /* Styles for timeline */
+        .timeline-item {
+            @apply relative pl-12 pb-8;
+        }
+        .timeline-item:last-child {
+            @apply pb-0;
+        }
+        .timeline-item::before {
+            content: '';
+            @apply absolute left-[22px] top-2 w-0.5 h-full bg-slate-200 dark:bg-slate-700;
+        }
+         .timeline-icon {
+            @apply absolute left-0 top-0 h-12 w-12 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center;
+        }
+        .timeline-icon i {
+            @apply text-primary text-xl;
+        }
+    </style>
 </head>
-<body>
-    <!-- Hero Section Start -->
-    <section id="home" class="pt-36">
-        <div class="container">
-            <div class="flex flex-wrap">
-                <div class="w-full self-center px-4 lg:w-1/2">
-                    <h1 class="text-base font-semibold text-primary md:text-2xl">Hallo👋, <span class="block font-bold text-dark text-3xl lg:text-4xl">Saya Imam Hatris Ekaputra</span></h1>
-                    
-                    <h2 class="font-medium text-slate-600 text-lg mb-3">Learner, Web Developer & Graphic Designer</h2>
+<body class="bg-slate-50 dark:bg-dark font-sans transition-colors duration-300">
 
-                    <p class="font-medium text-slate-400 mb-9 leading-relaxed">Menggapai web dan desain: jejak kreativitas seorang mahasiswa yang masih belajar✌️</p>
-                    
-                    <button class="button py-3 px-7"><span class="font-semibold leading-relaxed">Hubungi Saya</span></button>
-                    <!-- <a href="#" class="text-base font semi-bold text-white bg-primary py-3 px-8 rounded-full hover:shadow-lg">Hubungi Saya</a> -->
+    <header class="bg-white/80 dark:bg-dark/80 backdrop-blur-lg fixed top-0 left-0 w-full z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold text-dark dark:text-white">
+                Imam<span class="text-primary">.</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-2">
+                <a href="#about" class="nav-link">About Me</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="flex items-center">
+                <button id="theme-toggle" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                    <i class="fa-solid fa-moon text-lg"></i>
+                </button>
+                 <button id="hamburger" class="md:hidden ml-4 p-2 text-dark dark:text-white">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-dark">
+            <a href="#about" class="block py-3 px-6 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">About Me</a>
+            <a href="#portfolio" class="block py-3 px-6 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Portfolio</a>
+            <a href="#experience" class="block py-3 px-6 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Experience</a>
+            <a href="#skills" class="block py-3 px-6 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Skills</a>
+            <a href="#contact" class="block py-3 px-6 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="pt-32 pb-20 lg:pt-40">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-wrap items-center">
+                    <div class="w-full lg:w-1/2 text-center lg:text-left">
+                        <p class="text-primary font-semibold text-lg">I'm Imam Hatris Ekaputra</p>
+                        <h1 class="text-4xl lg:text-5xl font-extrabold text-dark dark:text-white mt-2 leading-tight">
+                            Information Technology Graduate Passionate about <span class="text-primary">Data & AI</span>
+                        </h1>
+                        <p class="mt-4 text-secondary dark:text-slate-400 max-w-xl mx-auto lg:mx-0">
+                            Transforming raw data into meaningful insights, building data-driven solutions, and developing predictive models to solve problems.
+                        </p>
+                        <div class="mt-8 flex justify-center lg:justify-start space-x-4">
+                            <a href="#contact" class="px-6 py-3 bg-primary text-white font-semibold rounded-full hover:bg-sky-600 transition-colors duration-300">Contact Me</a>
+                            </div>
+                    </div>
+                    <div class="w-full self-end px-4 lg:w-1/2">
+                        <div class="relative mt-8 lg:mt-7 lg:right-0">
+                            <img src="src/keren2.jpg" alt="" class="img max-w-full mx-auto">
+                        </div>
                 </div>
+                </div>
+            </div>
+        </section>
 
-                <div class="w-full self-end px-4 lg:w-1/2">
-                    <div class="relative mt-8 lg:mt-7 lg:right-0">
-                        <img src="src/keren2.jpg" alt="" class="img max-w-full mx-auto">
-                        <!-- <span class="absolute mt-10 -z-10 -bottom-5 left-1/2 -translate-x-1/2 md:scale-125">
-                            <svg width="400" height="400" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#38bdf8" d="M45.9,-69.1C55.9,-56,57.8,-37.7,64,-20.4C70.2,-3,80.8,13.3,75.9,23.5C71.1,33.7,50.7,37.8,35.5,45.3C20.3,52.8,10.1,63.7,-2.4,67C-15,70.4,-30,66.2,-44.7,58.5C-59.5,50.9,-73.9,39.8,-78.9,25.4C-83.9,11,-79.5,-6.7,-70.8,-19.8C-62.1,-33,-49.3,-41.5,-36.8,-53.8C-24.3,-66,-12.1,-82,2.9,-86C18,-90,36,-82.1,45.9,-69.1Z" transform="translate(100 100) scale(1.0)" />
-                              </svg> -->
-                        </span>
+        <section id="about" class="py-24 bg-white dark:bg-dark">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle max-w-2xl mx-auto">
+                    I am an Information Technology graduate from the University of North Sumatra with a GPA of 3.69/4.00. I have a great passion for learning and applying technology, especially in the fields of Artificial Intelligence and data.
+                </p>
+            </div>
+        </section>
 
-                        <!-- <img src="src/keren.jpg" alt="" class="img max-w-full mx-auto"> -->
+        <section id="portfolio" class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">Project Portfolio</h2>
+                    <p class="section-subtitle">Some of the projects I have worked on.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="card">
+                        <img src="https://placehold.co/600x400/34d399/ffffff?text=Chatbot" alt="Project 1">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl text-dark dark:text-white mb-2">Smart Islamic Chatbot</h3>
+                            <p class="text-secondary dark:text-slate-400 text-sm mb-4">An intelligent chatbot that provides accurate answers from trusted sources.</p>
+                            <div class="space-x-2">
+                                <span class="tag">LLM</span>
+                                <span class="tag">RAG</span>
+                                <span class="tag">AI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=Automation" alt="Project 2">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl text-dark dark:text-white mb-2">Meeting Transcription Automation</h3>
+                            <p class="text-secondary dark:text-slate-400 text-sm mb-4">Automatically transcribing meeting audio recordings into text.</p>
+                            <div class="space-x-2">
+                                <span class="tag">Speech-to-Text</span>
+                                <span class="tag">Web Automation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://placehold.co/600x400/f59e0b/ffffff?text=AR" alt="Project 3">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl text-dark dark:text-white mb-2">AR Learning App (LIDM Finalist)</h3>
+                            <p class="text-secondary dark:text-slate-400 text-sm mb-4">A learning application for the digestive system using Augmented Reality & 3D Models.</p>
+                            <div class="space-x-2">
+                                <span class="tag">Augmented Reality</span>
+                                <span class="tag">3D Modeling</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-24 bg-white dark:bg-dark">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">Experience & Organizations</h2>
+                    <p class="section-subtitle">My professional journey and contributions in various organizations.</p>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i class="fa-solid fa-briefcase"></i></div>
+                            <p class="text-sm text-secondary dark:text-slate-400">Nov 2024 - Feb 2025</p>
+                            <h3 class="text-lg font-bold text-dark dark:text-white mt-1">AI Engineer Intern</h3>
+                            <p class="text-sm font-medium text-secondary dark:text-slate-300">PT. Bahasa Kinerja Utama, Jakarta</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i class="fa-solid fa-briefcase"></i></div>
+                            <p class="text-sm text-secondary dark:text-slate-400">Jul 2024 - Aug 2025</p>
+                            <h3 class="text-lg font-bold text-dark dark:text-white mt-1">IT Support Intern</h3>
+                            <p class="text-sm font-medium text-secondary dark:text-slate-300">Prof. Dr. Chairuddin P. Lubis Hospital, Medan</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><i class="fa-solid fa-users"></i></div>
+                            <p class="text-sm text-secondary dark:text-slate-400">Aug 2023 - Jul 2024</p>
+                            <h3 class="text-lg font-bold text-dark dark:text-white mt-1">Deputy Secretary</h3>
+                            <p class="text-sm font-medium text-secondary dark:text-slate-300">MPM Fasilkom-TI USU, Medan</p>
+                        </div>
+                        <div class="timeline-item">
+                           <div class="timeline-icon"><i class="fa-solid fa-flask"></i></div>
+                           <p class="text-sm text-secondary dark:text-slate-400">Oct 2022 - Jun 2023</p>
+                           <h3 class="text-lg font-bold text-dark dark:text-white mt-1">Leader of Research & Development</h3>
+                           <p class="text-sm font-medium text-secondary dark:text-slate-300">Robotic SIKONEK USU, Medan</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section id="skills" class="py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <p class="section-subtitle">Technologies and tools I master.</p>
+                </div>
+                <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="skill-item">
+                        <i class="fa-brands fa-python text-5xl text-primary"></i>
+                        <p class="mt-2 font-semibold text-dark dark:text-white">Python</p>
+                    </div>
+                    <div class="skill-item">
+                         <i class="fa-solid fa-database text-5xl text-primary"></i>
+                        <p class="mt-2 font-semibold text-dark dark:text-white">SQL</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fa-solid fa-brain text-5xl text-primary"></i>
+                        <p class="mt-2 font-semibold text-dark dark:text-white">Machine Learning</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fa-solid fa-table-list text-5xl text-primary"></i>
+                        <p class="mt-2 font-semibold text-dark dark:text-white">Pandas & NumPy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 bg-white dark:bg-dark">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title">Contact Me</h2>
+                <p class="section-subtitle max-w-xl mx-auto">
+                    I am open to collaboration opportunities, projects, or just a discussion. Feel free to contact me.
+                </p>
+                <div class="mt-8">
+                    <a href="mailto:hatrisimam@gmail.com" class="inline-block px-8 py-4 bg-primary text-white text-lg font-semibold rounded-full hover:bg-sky-600 transition-colors duration-300">
+                        Send Email <i class="fa-solid fa-paper-plane ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-slate-400">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/imam-hatris-ekaputra" target="_blank" class="hover:text-primary transition-colors"><i class="fa-brands fa-linkedin text-2xl"></i></a>
+            </div>
+            <p class="text-sm">&copy; <span id="year"></span> Imam Hatris Ekaputra. All rights reserved.</p>
         </div>
-    </section>
-    <!-- Hero Section End -->
-    <!-- <h1 class="text-3xl font-bold underline">
-        Hello world!
-    </h1> -->
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Hamburger Menu Toggle
+        const hamburgerBtn = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileLinks) {
+            link.addEventListener('click', () => {
+                 mobileMenu.classList.add('hidden');
+            });
+        }
+        
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const htmlEl = document.documentElement;
+
+        // Function to set theme
+        const setTheme = (theme) => {
+            if (theme === 'dark') {
+                htmlEl.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlEl.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        };
+
+        // Event listener for toggle button
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            setTheme(currentTheme === 'light' ? 'dark' : 'light');
+        });
+
+        // Set initial theme based on localStorage or system preference
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (storedTheme) {
+            setTheme(storedTheme);
+        } else {
+            setTheme(systemPrefersDark ? 'dark' : 'light');
+        }
+    </script>
 </body>
 </html>
