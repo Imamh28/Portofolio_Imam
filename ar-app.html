@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail | AR Learning App</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9', // sky-500
+                        secondary: '#64748b', // slate-500
+                        dark: '#0f172a' // slate-900
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <style type="text/tailwindcss">
+        .section-title {
+            @apply text-3xl font-bold text-dark dark:text-white md:text-4xl;
+        }
+        .section-subtitle {
+            @apply mt-2 text-base font-medium text-secondary;
+        }
+        .card {
+            @apply bg-white dark:bg-slate-800/50 rounded-xl shadow-lg overflow-hidden transition-all duration-300;
+        }
+        .image-card {
+             @apply bg-white dark:bg-slate-800/50 p-4 rounded-xl shadow-lg;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-dark font-sans transition-colors duration-300">
+
+    <!-- Header Section -->
+    <header class="bg-white/80 dark:bg-dark/80 backdrop-blur-lg fixed top-0 left-0 w-full z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-dark dark:text-white">
+                Imam<span class="text-primary">.</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                 <a href="index.html" class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors duration-300">
+                    <i class="fa-solid fa-arrow-left mr-2"></i>Back to Home
+                </a>
+                <button id="theme-toggle" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                    <i class="fa-solid fa-moon text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        <!-- Project Hero Section -->
+        <section id="hero" class="py-16">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="section-title">DIGESTIFY: AR Learning App</h1>
+                <p class="section-subtitle max-w-3xl mx-auto">
+                    A gamified learning application for the digestive system using Augmented Reality and 3D Models, a finalist in the 2024 National Student Scientific Work Competition (LIDM).
+                </p>
+                <div class="mt-8 image-card">
+                    <img src="src/0.jpg" alt="Digestify App Showcase" class="rounded-lg mx-auto shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/e2e8f0/475569?text=Image+Not+Found';">
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Details Section -->
+        <section id="details" class="py-16 bg-white dark:bg-dark">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="section-title mb-4">Problem Statement</h2>
+                        <p class="text-secondary dark:text-slate-400 mb-6">
+                            Student understanding of the human digestive system is often low. Data shows that 53.64% of junior high school students in Pontianak did not achieve mastery in this subject, with an average score of only 38.18 for high school students. The main causes identified were boring and less interactive learning methods.
+                        </p>
+                        <h2 class="section-title mb-4">Solution Research</h2>
+                        <p class="text-secondary dark:text-slate-400">
+                            Research from Virti (2023) shows that technologies like AR and VR provide tangible benefits such as improved training quality, long-term cost efficiency, and higher student engagement. The visual-interactive method proves to be more effective than conventional learning.
+                        </p>
+                    </div>
+                    <div class="image-card">
+                        <img src="src/1.jpg" alt="Problem Statement and Solution Research" class="rounded-lg shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/e2e8f0/475569?text=Image+Not+Found';">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="methodology" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                     <div class="image-card">
+                        <img src="src/2.jpg" alt="Agile Methodology" class="rounded-lg shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/e2e8f0/475569?text=Image+Not+Found';">
+                    </div>
+                    <div>
+                        <h2 class="section-title mb-4">Agile Methodology</h2>
+                        <p class="text-secondary dark:text-slate-400 mb-6">
+                            The development of Digestify follows the Agile framework, divided into three main phases: Pre-implementation, Implementation, and Post-implementation. This approach allows the team to adapt quickly to user feedback and continuously improve the application's quality.
+                        </p>
+                        <h2 class="section-title mb-4">Solution Determination</h2>
+                        <p class="text-secondary dark:text-slate-400">
+                            Digestify was developed based on a multi-method learning approach, ranging from lectures, 3D simulations, self-study, to discussions. This solution addresses the needs of students who have difficulty understanding abstract concepts and visualizing the human digestive system.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="design" class="py-16 bg-white dark:bg-dark">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="section-title mb-4">Design Process</h2>
+                        <p class="text-secondary dark:text-slate-400 mb-6">
+                           To solve the problem of boring digestive system learning, we designed a mobile-based solution with an engaging visual approach. The initial design started from rough wireframes, then developed into a more intuitive and user-friendly digital UI prototype.
+                        </p>
+                        <h2 class="section-title mb-4">User Evaluation</h2>
+                        <p class="text-secondary dark:text-slate-400">
+                            Evaluation was conducted using test (formative and summative) and non-test (interview) techniques. The results showed an average validation score of >8.0 (excellent category), with teacher ratings reaching 92%. This proves that Digestify is not only well received by students but also considered effective by teaching staff.
+                        </p>
+                    </div>
+                    <div class="image-card">
+                        <img src="src/3.jpg" alt="Design Process and User Evaluation" class="rounded-lg shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/e2e8f0/475569?text=Image+Not+Found';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="py-16">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="section-title">Impact and Recognition</h2>
+                    <p class="section-subtitle">Socialization activities and achievements.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                     <div class="image-card">
+                        <img src="src/4.jpg" alt="Socialization and Certificate" class="rounded-lg shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/e2e8f0/475569?text=Image+Not+Found';">
+                    </div>
+                    <div class="text-center lg:text-left">
+                        <h3 class="text-2xl font-bold text-dark dark:text-white mb-3">Socialization to Users</h3>
+                        <p class="text-secondary dark:text-slate-400 mb-6">
+                            Documentation of socialization activities with students and teachers of SMP IT Ali Bin Abi Talib, Tanjung Morawa. We also presented our solution at the final LIDM competition at the Bogor Agricultural Institute (IPB).
+                        </p>
+                        <h3 class="text-2xl font-bold text-dark dark:text-white mb-3">National Finalist</h3>
+                        <p class="text-secondary dark:text-slate-400">
+                            Certificate of Recognition as a finalist at the LIDM 2024 competition, recognizing our participation and the quality of our innovative educational application.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-slate-400">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/imam-hatris-ekaputra" target="_blank" class="hover:text-primary transition-colors"><i class="fa-brands fa-linkedin text-2xl"></i></a>
+            </div>
+            <p class="text-sm">&copy; <span id="year"></span> Imam Hatris Ekaputra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const htmlEl = document.documentElement;
+
+        // Function to set theme
+        const setTheme = (theme) => {
+            if (theme === 'dark') {
+                htmlEl.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlEl.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        };
+
+        // Event listener for toggle button
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            setTheme(currentTheme === 'light' ? 'dark' : 'light');
+        });
+
+        // Set initial theme based on localStorage or system preference
+        const storedTheme = localStorage.getItem('theme');
+        // FIX: Corrected 'matchmedia' to 'matchMedia' (it's case-sensitive)
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (storedTheme) {
+            setTheme(storedTheme);
+        } else {
+            setTheme(systemPrefersDark ? 'dark' : 'light');
+        }
+    </script>
+</body>
+</html>
