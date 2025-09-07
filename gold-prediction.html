@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail | Gold Price Prediction with LSTM</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f59e0b', // amber-500
+                        secondary: '#64748b', // slate-500
+                        dark: '#0f172a' // slate-900
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        .section-title {
+            @apply text-3xl font-bold text-dark dark:text-white md:text-4xl;
+        }
+        .section-subtitle {
+            @apply mt-2 text-base font-medium text-secondary;
+        }
+        .card {
+            @apply bg-white dark:bg-slate-800/50 rounded-xl shadow-lg overflow-hidden transition-all duration-300;
+        }
+        .image-card {
+             @apply bg-white dark:bg-slate-800/50 p-4 rounded-xl shadow-lg;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-dark font-sans transition-colors duration-300">
+
+    <header class="bg-white/80 dark:bg-dark/80 backdrop-blur-lg fixed top-0 left-0 w-full z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-dark dark:text-white">
+                Gold Price Prediction<span class="text-primary">.</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                 <a href="index.html" class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors duration-300">
+                    <i class="fa-solid fa-arrow-left mr-2"></i>Back to Portfolio
+                </a>
+                <button id="theme-toggle" class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                    <i class="fa-solid fa-moon text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        <section id="hero" class="py-16">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="section-title">Gold Price Prediction using LSTM</h1>
+                <p class="section-subtitle max-w-3xl mx-auto">
+                    A deep learning model to forecast 35 years of gold price data (1990-2025) using Long Short-Term Memory (LSTM) networks.
+                </p>
+                <div class="mt-8 image-card">
+                    <img src="src/gold_price_chart.png" alt="Gold Price History Chart" class="rounded-lg mx-auto shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/e2e8f0/475569?text=Plot:+Gold+Price+History';">
+                </div>
+            </div>
+        </section>
+
+        <section id="details" class="py-16 bg-white dark:bg-dark">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="section-title mb-4">Data and Preprocessing</h2>
+                        <p class="text-secondary dark:text-slate-400 mb-6">
+                            The project utilizes a dataset spanning 35 years of gold price history, containing daily prices from 1990 to 2025. The initial phase involves rigorous data cleaning: irrelevant columns ('Vol.', 'Change %') are dropped, date columns are converted to the correct format, and numerical data is cleaned of commas and converted to floating-point numbers for analysis.
+                        </p>
+                        <h2 class="section-title mb-4">Train-Test Split</h2>
+                        <p class="text-secondary dark:text-slate-400">
+                            The dataset is split into training and testing sets. The data from 1990 up to the end of 2024 is used for training the model, while the data for the year 2025 is reserved as the unseen test set to evaluate the model's predictive performance.
+                        </p>
+                    </div>
+                    <div class="image-card">
+                        <img src="src/gold-train-test.jpg" alt="Train and Test Data Split Visualization" class="rounded-lg shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/e2e8f0/475569?text=Plot:+Train/Test+Split';">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="methodology" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                     <div class="image-card text-left text-xs text-dark dark:text-slate-300 overflow-x-auto">
+                        <pre class="font-mono">
+Model: "functional_1"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ input_layer (InputLayer)        │ (None, 60, 1)          │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ lstm (LSTM)                     │ (None, 60, 256)        │       264,192 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (Dropout)               │ (None, 60, 256)        │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ lstm_1 (LSTM)                   │ (None, 60, 128)        │       197,120 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_1 (Dropout)             │ (None, 60, 128)        │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ lstm_2 (LSTM)                   │ (None, 64)             │        49,408 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_2 (Dropout)             │ (None, 64)             │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (Dense)                   │ (None, 32)             │         2,080 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (Dense)                 │ (None, 1)              │            33 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+ Total params: 512,833 (1.96 MB)
+</pre>
+                    </div>
+                    <div>
+                        <h2 class="section-title mb-4">LSTM Model Architecture</h2>
+                        <p class="text-secondary dark:text-slate-400 mb-6">
+                            The time series data is transformed into sequences using a sliding window. A window of 60 previous days is used as input features to predict the next day's price. The data is scaled using MinMaxScaler, which is crucial for neural network performance.
+                        </p>
+                        <p class="text-secondary dark:text-slate-400">
+                           A deep learning model is constructed using Keras with three stacked LSTM layers (256, 128, and 64 units) and Dropout layers to prevent overfitting. The final output is produced by a Dense layer. The model uses the 'Nadam' optimizer and 'mean_squared_error' as its loss function.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="design" class="py-16 bg-white dark:bg-dark">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="section-title mb-4">Training & Evaluation</h2>
+                        <p class="text-secondary dark:text-slate-400 mb-6">
+                           The model is trained for up to 150 epochs with a batch size of 16. To ensure optimal performance and prevent overfitting, an EarlyStopping callback is implemented to halt training when the validation loss stops improving over 25 consecutive epochs.
+                        </p>
+                        <h2 class="section-title mb-4">Performance Results</h2>
+                        <p class="text-secondary dark:text-slate-400">
+                            After training, the model's performance is evaluated on the unseen test set (data from 2025). It achieves a low test loss and a high accuracy of approximately <strong>96.8%</strong>, calculated as (1 - Mean Absolute Percentage Error), demonstrating its strong predictive capability.
+                        </p>
+                    </div>
+                    <div class="image-card">
+                        <img src="src/training.png" alt="Model Prediction vs Actual Data" class="rounded-lg shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/e2e8f0/475569?text=Plot:+Prediction+vs+Actual';">
+                        <br><img src="src/val.png" alt="Model Prediction vs Actual Data" class="rounded-lg shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/e2e8f0/475569?text=Plot:+Prediction+vs+Actual';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="py-16">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="section-title">Prediction Results</h2>
+                    <p class="section-subtitle">Visualizing the model's performance on the test data.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                     <div class="image-card">
+                        <img src="src/gold-prediction.png" alt="Final prediction results plot" class="rounded-lg shadow-md" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/e2e8f0/475569?text=Plot:+Prediction+vs+Actual';">
+                    </div>
+                    <div class="text-center lg:text-left">
+                        <h3 class="text-2xl font-bold text-dark dark:text-white mb-3">Conclusion</h3>
+                        <p class="text-secondary dark:text-slate-400 mb-6">
+                            The final plot clearly shows the model's predictions (in red) closely tracking the actual gold prices (in blue) for the test period. This visual confirmation, along with the high accuracy score, validates the LSTM model's effectiveness for time series forecasting of financial data.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-dark text-slate-400">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/imam-hatris-ekaputra" target="_blank" class="hover:text-primary transition-colors"><i class="fa-brands fa-linkedin text-2xl"></i></a>
+                <a href="https://www.instagram.com/imamhatris/" target="_blank" class="hover:text-primary transition-colors"><i class="fa-brands fa-instagram text-2xl"></i></a>
+            </div>
+            <p class="text-sm">&copy; <span id="year"></span> Imam Hatris Ekaputra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const htmlEl = document.documentElement;
+
+        // Function to set theme
+        const setTheme = (theme) => {
+            if (theme === 'dark') {
+                htmlEl.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlEl.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        };
+
+        // Event listener for toggle button
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            setTheme(currentTheme === 'light' ? 'dark' : 'light');
+        });
+
+        // Set initial theme based on localStorage or system preference
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (storedTheme) {
+            setTheme(storedTheme);
+        } else {
+            setTheme(systemPrefersDark ? 'dark' : 'light');
+        }
+    </script>
+</body>
+</html>
