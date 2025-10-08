@@ -332,7 +332,6 @@
             setTheme(currentTheme === 'light' ? 'dark' : 'light');
         });
 
-        // Set initial theme based on localStorage or system preference
         const storedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
