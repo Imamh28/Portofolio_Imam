@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail | Emphysema Lesion Segmentation</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#64748b',
+                        dark: '#0f172a'
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style type="text/tailwindcss">
+        .section-title {
+            @apply text-3xl font-bold text-dark dark:text-white md:text-4xl;
+        }
+
+        .section-subtitle {
+            @apply mt-2 text-base font-medium text-secondary;
+        }
+
+        .card {
+            @apply bg-white dark:bg-slate-800/50 rounded-xl shadow-lg overflow-hidden transition-all duration-300;
+        }
+
+        .image-card {
+            @apply bg-white dark:bg-slate-800/50 p-4 rounded-xl shadow-lg;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 dark:bg-dark font-sans transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="bg-white/80 dark:bg-dark/80 backdrop-blur-lg fixed top-0 left-0 w-full z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-dark dark:text-white">
+                Imam<span class="text-primary">.</span>
+            </a>
+
+            <div class="flex items-center space-x-4">
+                <a href="index.html"
+                   class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary transition-colors duration-300">
+                    <i class="fa-solid fa-arrow-left mr-2"></i>Back to Home
+                </a>
+
+                <button id="theme-toggle"
+                        class="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">
+                    <i class="fa-solid fa-moon text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24">
+
+        <!-- Hero -->
+        <section id="hero" class="py-16">
+            <div class="container mx-auto px-6 text-center">
+
+                <h1 class="section-title">
+                    Emphysema Lesion Detection & Segmentation
+                </h1>
+
+                <p class="section-subtitle max-w-3xl mx-auto">
+                    Bachelor thesis project focused on pulmonary emphysema lesion segmentation 
+                    from chest X-ray images using Mask R-CNN deep learning architecture 
+                    for computer-aided medical diagnosis.
+                </p>
+
+                <div class="mt-8 image-card">
+                    <img src="src/home-emfisema.png"
+                         alt="Medical AI Project"
+                         class="rounded-lg mx-auto shadow-md">
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem -->
+        <section id="problem" class="py-16 bg-white dark:bg-dark">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                    <div>
+                        <h2 class="section-title mb-4">Problem Statement</h2>
+
+                        <p class="text-secondary dark:text-slate-400 mb-6">
+                            Pulmonary emphysema is a chronic lung disease that causes damage 
+                            to air sacs in the lungs and reduces respiratory function. 
+                            Manual lesion identification from chest X-ray images requires 
+                            experienced radiologists and can be time-consuming.
+                        </p>
+
+                        <h2 class="section-title mb-4">Research Objective</h2>
+
+                        <p class="text-secondary dark:text-slate-400">
+                            This research aims to develop an automated medical imaging system 
+                            capable of detecting and segmenting emphysema lesion areas 
+                            using deep learning techniques to support faster and more 
+                            accurate diagnosis.
+                        </p>
+                    </div>
+
+                    <div class="image-card">
+                        <img src="src/chest.png"
+                             alt="Chest X-Ray"
+                             class="rounded-lg shadow-md">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology -->
+        <section id="methodology" class="py-16">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                    <div class="image-card">
+                        <img src="src/arsitektur.png"
+                             alt="Mask RCNN"
+                             class="rounded-lg shadow-md">
+                    </div>
+
+                    <div>
+                        <h2 class="section-title mb-4">Methodology</h2>
+
+                        <p class="text-secondary dark:text-slate-400 mb-6">
+                            The system was developed using Mask R-CNN architecture with 
+                            ResNet backbone for object detection and image segmentation. 
+                            Chest X-ray images were resized into 512×512 resolution 
+                            before annotation and training processes.
+                        </p>
+
+                        <h2 class="section-title mb-4">Data Annotation</h2>
+
+                        <p class="text-secondary dark:text-slate-400">
+                            Image annotation was conducted using VIA Annotator to create 
+                            segmentation masks for emphysema lesions. The annotations 
+                            were validated by radiology experts to ensure data quality 
+                            and medical accuracy.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow -->
+        <section id="workflow" class="py-16 bg-white dark:bg-dark">
+            <div class="container mx-auto px-6">
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                    <div>
+                        <h2 class="section-title mb-4">Development Workflow</h2>
+
+                        <p class="text-secondary dark:text-slate-400 mb-6">
+                            The project workflow includes data preprocessing, annotation, 
+                            model training, validation, and evaluation. Image preprocessing 
+                            was performed to normalize datasets and improve training consistency.
+                        </p>
+
+                        <h2 class="section-title mb-4">Model Evaluation</h2>
+
+                        <p class="text-secondary dark:text-slate-400">
+                            The model performance was evaluated using segmentation metrics 
+                            such as accuracy, precision, recall, and IoU (Intersection over Union) 
+                            to measure the quality of lesion detection and segmentation results.
+                        </p>
+                    </div>
+
+                    <div class="image-card">
+                        <img src="src/tabel_evaluasi_emfisema.png"
+                             alt="Workflow"
+                             class="rounded-lg shadow-md">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies -->
+        <section id="technologies" class="py-16">
+            <div class="container mx-auto px-6">
+
+                <div class="text-center mb-12">
+                    <h2 class="section-title">Technologies Used</h2>
+                    <p class="section-subtitle">
+                        AI, Computer Vision, and Medical Imaging Technologies.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+                    <div class="card p-6 text-center">
+                        <i class="fa-solid fa-brain text-4xl text-primary mb-4"></i>
+                        <h3 class="font-bold text-dark dark:text-white">Mask R-CNN</h3>
+                    </div>
+
+                    <div class="card p-6 text-center">
+                        <i class="fa-solid fa-eye text-4xl text-primary mb-4"></i>
+                        <h3 class="font-bold text-dark dark:text-white">Computer Vision</h3>
+                    </div>
+
+                    <div class="card p-6 text-center">
+                        <i class="fa-solid fa-x-ray text-4xl text-primary mb-4"></i>
+                        <h3 class="font-bold text-dark dark:text-white">Medical Imaging</h3>
+                    </div>
+
+                    <div class="card p-6 text-center">
+                        <i class="fa-solid fa-microchip text-4xl text-primary mb-4"></i>
+                        <h3 class="font-bold text-dark dark:text-white">Deep Learning</h3>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-slate-400">
+        <div class="container mx-auto px-6 py-8 text-center">
+
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/imam-hatris-ekaputra"
+                   target="_blank"
+                   class="hover:text-primary transition-colors">
+                    <i class="fa-brands fa-linkedin text-2xl"></i>
+                </a>
+
+                <a href="https://www.instagram.com/imamhatris/"
+                   target="_blank"
+                   class="hover:text-primary transition-colors">
+                    <i class="fa-brands fa-instagram text-2xl"></i>
+                </a>
+            </div>
+
+            <p class="text-sm">
+                &copy; <span id="year"></span> Imam Hatris Ekaputra. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const htmlEl = document.documentElement;
+
+        const setTheme = (theme) => {
+            if (theme === 'dark') {
+                htmlEl.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlEl.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        };
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            setTheme(currentTheme === 'light' ? 'dark' : 'light');
+        });
+
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (storedTheme) {
+            setTheme(storedTheme);
+        } else {
+            setTheme(systemPrefersDark ? 'dark' : 'light');
+        }
+    </script>
+
+</body>
+</html>
